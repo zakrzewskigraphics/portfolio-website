@@ -4,6 +4,7 @@
     src: url('fonts/Manrope-Light.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
+    font-display: block;
 }
 
 @font-face {
@@ -11,6 +12,7 @@
     src: url('fonts/Manrope-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
+    font-display: block;
 }
 
 @font-face {
@@ -18,6 +20,7 @@
     src: url('fonts/Manrope-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
+    font-display: block;
 }
 
 @font-face {
@@ -25,6 +28,7 @@
     src: url('fonts/Manrope-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
+    font-display: block;
 }
 
 @font-face {
@@ -32,6 +36,7 @@
     src: url('fonts/Condenso-Demo.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 
 /* CSS Variables */
@@ -193,6 +198,10 @@ html, body {
     z-index: 10;
     pointer-events: none;
 
+    /* Hide initially to prevent positioning glitches during font loading */
+    opacity: 0;
+    transition: opacity 0.6s ease;
+
     /* Base glassmorphism effect */
     background: linear-gradient(
         135deg,
@@ -213,6 +222,11 @@ html, body {
 
     /* Liquid glass distortion effect */
     filter: brightness(1.1) url('#liquid-glass-filter');
+}
+
+/* Show pills after page is loaded and layout is stable */
+.liquid-glass-pill.visible {
+    opacity: 1;
 }
 
 /* HERO PILL - covers "RZEWSKI" with -31° rotation */
@@ -341,8 +355,7 @@ html, body {
     inset: 0;
     background: linear-gradient(
         to top,
-        rgba(21, 21, 21, 0.95) 0%,
-        rgba(21, 21, 21, 0.4) 50%,
+        rgb(21, 21, 21) 0%,
         rgba(21, 21, 21, 0) 100%
     );
     z-index: 2;
@@ -634,7 +647,7 @@ html, body {
     }
 
     .hero-title {
-        font-size: clamp(48px, 12vw, 72px);
+        font-size: clamp(48px, 17vw, 120px);
         margin-bottom: 24px;
     }
 
@@ -1475,7 +1488,9 @@ html, body {
 
     .skill-orbit {
         order: 2;
-        height: 400px;
+        height: auto;
+        background: transparent;
+        padding: 0;
     }
 
     .skill-content {
@@ -1513,78 +1528,128 @@ html, body {
         font-size: 13px;
     }
 
-    /* Smaller orbital system for mobile */
+    /* Hide orbital rings on mobile */
     .orbit-rings {
-        width: 360px;
-        height: 360px;
+        display: none;
     }
 
+    /* Convert orbital icons to vertical list on mobile */
     .orbit-icons {
-        width: 360px;
-        height: 360px;
+        position: static;
+        width: 100%;
+        height: auto;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
-    .orbit-ring.ring-1 {
-        width: 100px;
-        height: 100px;
-    }
-
-    .orbit-ring.ring-2 {
-        width: 180px;
-        height: 180px;
-    }
-
-    .orbit-ring.ring-3 {
-        width: 260px;
-        height: 260px;
-    }
-
+    /* Each tile is horizontal layout: icon left, content right */
     .icon-tile {
-        width: 48px;
-        height: 48px;
-        margin-left: -24px;
-        margin-top: -24px;
-        padding: 10px;
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 24px !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 24px !important;
+        background: rgba(247, 246, 239, 0.03) !important;
+        border: 1px solid rgba(247, 246, 239, 0.12) !important;
+        border-radius: 12px !important;
+        cursor: default !important;
+        transition: none !important;
+        pointer-events: none;
     }
 
-    .icon-tile[style*="--ring: 1"] {
-        transform: rotate(var(--angle)) translateY(-50px) rotate(calc(-1 * var(--angle)));
+    /* Icon on the left */
+    .icon-tile .tile-icon {
+        width: 24px !important;
+        height: 40px !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+        opacity: 1 !important;
     }
 
-    .icon-tile[style*="--ring: 2"] {
-        transform: rotate(var(--angle)) translateY(-90px) rotate(calc(-1 * var(--angle)));
+    /* Content on the right - fully visible */
+    .icon-tile .tile-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        opacity: 1 !important;
+        max-width: none !important;
+        max-height: none !important;
+        overflow: visible !important;
+        text-align: left !important;
+        width: 100% !important;
+        flex: 1 !important;
     }
 
-    .icon-tile[style*="--ring: 3"] {
-        transform: rotate(var(--angle)) translateY(-130px) rotate(calc(-1 * var(--angle)));
+    /* All text visible and aligned left */
+    .icon-tile .tile-name {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        color: var(--text-primary) !important;
+        transition: none !important;
+        margin: 0 !important;
     }
 
-    .tile-icon {
-        width: 28px;
-        height: 28px;
+    .icon-tile .tile-experience {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        text-align: left !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        color: var(--text-primary) !important;
+        transition: none !important;
+        margin: 0 !important;
     }
 
-    /* Mobile: tiles expand on tap */
+    .icon-tile .tile-use {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        text-align: left !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        color: var(--text-secondary) !important;
+        line-height: 1.5 !important;
+        transition: none !important;
+        margin: 0 !important;
+    }
+
+    /* No hover/active effects on mobile */
     .icon-tile:hover,
     .icon-tile.active {
-        width: calc(100vw - 48px);
-        max-width: 340px;
-        height: 160px;
-        padding: 16px;
+        width: 100% !important;
+        height: auto !important;
+        padding: 16px !important;
+        transform: none !important;
+        flex-direction: row !important;
+        background: rgba(247, 246, 239, 0.03) !important;
     }
 
     .icon-tile:hover .tile-content,
     .icon-tile.active .tile-content {
-        max-width: 280px;
+        opacity: 1 !important;
+        max-width: none !important;
+        max-height: none !important;
     }
 
-    .tile-name {
-        font-size: 16px;
-    }
-
-    .tile-experience,
-    .tile-use {
-        font-size: 13px;
+    .icon-tile:hover .tile-name,
+    .icon-tile:hover .tile-experience,
+    .icon-tile:hover .tile-use,
+    .icon-tile.active .tile-name,
+    .icon-tile.active .tile-experience,
+    .icon-tile.active .tile-use {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 }
 
@@ -1786,7 +1851,7 @@ html, body {
     }
 
     .about-title {
-        font-size: clamp(40px, 10vw, 60px);
+        font-size: clamp(40px, 18vw, 96px);
         margin-bottom: 12px;
     }
 
@@ -2076,11 +2141,27 @@ html, body {
     overflow: hidden;
 }
 
-.footer-background-text {
+.footer-background-text-link {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-decoration: none;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.footer-background-text-link:hover {
+    transform: translate(-50%, -50%) translateY(-5px);
+}
+
+.footer-background-text-link:hover .footer-background-text {
+    opacity: 0.10;
+}
+
+.footer-background-text {
     font-family: 'Condenso', sans-serif;
     font-size: clamp(36px, 10vw, 240px);
     font-weight: normal;
@@ -2089,18 +2170,10 @@ html, body {
     color: var(--text-primary);
     opacity: 0.05;
     white-space: nowrap;
-    pointer-events: auto;
     user-select: none;
-    z-index: 10;
     max-width: calc(100vw - 160px);
     text-align: center;
-    cursor: pointer;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.footer-background-text:hover {
-    opacity: 0.10;
-    transform: translate(-50%, -50%) translateY(-5px);
+    transition: opacity 0.3s ease;
 }
 
 .footer-content {
@@ -2195,7 +2268,7 @@ html, body {
     }
 
     .contact-title {
-        font-size: clamp(42px, 7vw, 90px);
+        font-size: clamp(42px, 12vw, 120px);
     }
 }
 
@@ -2210,7 +2283,7 @@ html, body {
     }
 
     .contact-title {
-        font-size: clamp(36px, 9vw, 56px);
+        font-size: clamp(36px, 15vw, 96px);
     }
 
     .contact-form {
@@ -2256,8 +2329,8 @@ html, body {
         font-size: 14px;
         min-height: 44px;
         gap: 10px;
+        justify-content: center;
         width: 100%;
-        max-width: 280px;
     }
 }
 

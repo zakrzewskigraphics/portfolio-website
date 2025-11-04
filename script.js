@@ -25,6 +25,14 @@ window.addEventListener('load', () => {
         loader.style.display = 'none';
     }, 1100);
 
+    // Show glass pills after layout is stable (after fonts are loaded)
+    setTimeout(() => {
+        const glassPills = document.querySelectorAll('.liquid-glass-pill');
+        glassPills.forEach(pill => {
+            pill.classList.add('visible');
+        });
+    }, 1200);
+
     // Hero text animations - start after page loader completes
     setTimeout(() => {
         const heroTitle = document.querySelector('.hero-title');
@@ -177,11 +185,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Detect if device is touch-enabled
     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isMobileViewport = () => window.innerWidth <= 767;
 
     iconTiles.forEach(tile => {
-        // Mouse events (desktop)
+        // Mouse events (desktop only - not mobile viewport)
         tile.addEventListener('mouseenter', () => {
-            if (backdrop && !isTouchDevice) {
+            if (backdrop && !isTouchDevice && !isMobileViewport()) {
                 backdrop.style.opacity = '1';
                 backdrop.style.backdropFilter = 'blur(15px)';
                 backdrop.style.background = 'rgba(0, 0, 0, 0.3)';
@@ -189,16 +198,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         tile.addEventListener('mouseleave', () => {
-            if (backdrop && !isTouchDevice) {
+            if (backdrop && !isTouchDevice && !isMobileViewport()) {
                 backdrop.style.opacity = '0';
                 backdrop.style.backdropFilter = 'blur(0px)';
                 backdrop.style.background = 'rgba(0, 0, 0, 0)';
             }
         });
 
-        // Touch events (mobile/tablet)
+        // Touch events (tablet only - not mobile viewport)
         if (isTouchDevice) {
             tile.addEventListener('click', (e) => {
+                // Skip mobile viewport - tiles are always expanded there
+                if (isMobileViewport()) {
+                    return;
+                }
+
                 // Close all other tiles with smooth animation
                 iconTiles.forEach(otherTile => {
                     if (otherTile !== tile) {
@@ -235,9 +249,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close all tiles when clicking outside (touch devices)
+    // Close all tiles when clicking outside (touch devices, not mobile viewport)
     if (isTouchDevice) {
         document.addEventListener('click', (e) => {
+            // Skip mobile viewport
+            if (isMobileViewport()) {
+                return;
+            }
+
             if (!e.target.closest('.icon-tile')) {
                 iconTiles.forEach(tile => {
                     tile.classList.remove('active');
@@ -1082,6 +1101,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show modal
         requestAnimationFrame(() => {
             modal.classList.add('active');
+
+            // Reset scroll positions after modal is shown
+            requestAnimationFrame(() => {
+                const panel = document.querySelector('.project-modal-panel');
+                if (panel) panel.scrollTop = 0;
+                if (modalContent) modalContent.scrollTop = 0;
+            });
         });
     }
 
