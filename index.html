@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://formspree.io 'unsafe-inline'; style-src 'self' https://unpkg.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://formspree.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
+
+    <!-- Primary Meta Tags -->
+    <title>Zakrzewski Hubert - Web Developer & Project Manager Portfolio</title>
+    <meta name="title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
+    <meta name="description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. Based between Poland and Spain. View my portfolio of delivered projects.">
+    <meta name="keywords" content="web developer, project manager, webflow developer, portfolio, web design, low-code development, AI-assisted development">
+    <meta name="author" content="Hubert Zakrzewski">
+    <meta name="theme-color" content="#151515">
+    <link rel="canonical" href="https://zakrzewskihubert.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zakrzewskihubert.com/">
+    <meta property="og:title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
+    <meta property="og:description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
+    <meta property="og:image" content="https://zakrzewskihubert.com/images/open_graph_image.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Zakrzewski Hubert Portfolio">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zakrzewskihubert.com/">
+    <meta name="twitter:title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
+    <meta name="twitter:description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
+    <meta name="twitter:image" content="https://zakrzewskihubert.com/images/open_graph_image.webp">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+
+    <!-- Favicons -->
+    <link rel="icon" href="images/zakrzewski_hubert_logo.webp" sizes="any" type="image/webp">
+    <link rel="shortcut icon" href="images/zakrzewski_hubert_logo.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="images/zakrzewski_hubert_logo.webp">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-tile loader-tile-top"></div>
+        <div class="loader-tile loader-tile-bottom"></div>
+    </div>
+
+    <!-- Grain Effect Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- SVG Filters for Liquid Glass Effect -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <filter id="liquid-glass-filter" x="-50%" y="-50%" width="200%" height="200%">
+                <!-- Turbulence creates the organic liquid texture -->
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.02"
+                    numOctaves="3"
+                    result="turbulence">
+                    <animate
+                        attributeName="baseFrequency"
+                        values="0.02;0.025;0.02"
+                        dur="8s"
+                        repeatCount="indefinite"/>
+                </feTurbulence>
+
+                <!-- Displacement creates the liquid distortion -->
+                <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="turbulence"
+                    scale="8"
+                    xChannelSelector="R"
+                    yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <p class="hero-caption">HELLO, MY NAME IS</p>
+            <div class="title-wrapper">
+                <div class="liquid-glass-pill hero-glass-pill"></div>
+                <h1 class="hero-title" data-splitting>HUBERT ZAKRZEWSKI</h1>
+            </div>
+            
+            <div class="role-loop">
+                <div class="role-loop-track">
+                    <div class="role-group">
+                        <span class="role-item">DESIGNER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                    <div class="role-group">
+                        <span class="role-item">LOW-CODE DEVELOPER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                    <div class="role-group">
+                        <span class="role-item">PROJECT MANAGER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                    <div class="role-group">
+                        <span class="role-item">DESIGNER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                    <div class="role-group">
+                        <span class="role-item">LOW-CODE DEVELOPER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                    <div class="role-group">
+                        <span class="role-item">PROJECT MANAGER</span>
+                        <div class="role-dot"></div>
+                    </div>
+                </div>
+                <div class="role-loop-gradient"></div>
+            </div>
+            
+            <p class="hero-body" data-splitting="words">
+                I'm a web developer and project manager who builds functional websites and leads them from concept to completion. I work with code, design tools, and modern workflows to deliver projects that ship.
+            </p>
+            
+            <a href="#selected-work" class="hero-cta">
+                <span class="icon-mask">
+                    <span class="icon-track">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--primary">
+                            <path d="M7 7h10v10"/>
+                            <path d="M7 17 17 7"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
+                            <path d="M7 7h10v10"/>
+                            <path d="M7 17 17 7"/>
+                        </svg>
+                    </span>
+                </span>
+                <span class="cta-text">View projects</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section class="selected-work" id="selected-work">
+        <div class="work-header scroll-animate">
+            <h2 class="work-title">Selected Work</h2>
+            <p class="work-subtitle">Recent websites I've built</p>
+        </div>
+
+        <div class="carousel-viewport">
+            <div class="carousel-track">
+                <div class="carousel-slide scroll-animate" data-project="aswent">
+                    <div class="slide-image">
+                        <img src="images/aswent.png" alt="ASWENT project screenshot">
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-meta">
+                                <span class="slide-name">ASWENT</span>
+                                <span class="slide-separator">|</span>
+                                <span class="slide-year">2025</span>
+                            </div>
+                            <div class="slide-buttons">
+                                <button class="slide-btn primary">Open project</button>
+                                <button class="slide-btn secondary">Live site</button>
+                            </div>
+                        </div>
+                        
+                        <p class="slide-tagline">Brand website for 20+ year engineering firm</p>
+                        
+                        <div class="slide-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Industry:</span>
+                                <span class="info-value">Ventilations and construction</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tools:</span>
+                                <span class="info-value">Figma, Adobe Stack</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Vanilla stack:</span>
+                                <span class="info-value">HTML/CSS/JavaScript</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI-Assisted:</span>
+                                <span class="info-value">Cursor, Claude Code, Codex</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide scroll-animate" data-project="tintara">
+                    <div class="slide-image">
+                        <img src="images/tintara.png" alt="Tintara project screenshot">
+                    </div>
+                    
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-meta">
+                                <span class="slide-name">Tintara™</span>
+                                <span class="slide-separator">|</span>
+                                <span class="slide-year">2025</span>
+                            </div>
+                            <div class="slide-buttons">
+                                <button class="slide-btn primary">Open project</button>
+                                <button class="slide-btn secondary">Live site</button>
+                            </div>
+                        </div>
+                        
+                        <p class="slide-tagline">Brand website for 20+ year engineering firm</p>
+                        
+                        <div class="slide-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Industry:</span>
+                                <span class="info-value">Windows and foils</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tools:</span>
+                                <span class="info-value">Figma, Adobe Stack, Webflow</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Vanilla stack:</span>
+                                <span class="info-value">Webflow + JavaScript</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI-Assisted:</span>
+                                <span class="info-value">Gemini</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide scroll-animate" data-project="lumena">
+                    <div class="slide-image">
+                        <img src="images/lumena.png" alt="Lumena project screenshot">
+                    </div>
+
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-meta">
+                                <span class="slide-name">Lumena</span>
+                                <span class="slide-separator">|</span>
+                                <span class="slide-year">2025</span>
+                            </div>
+                            <div class="slide-buttons">
+                                <button class="slide-btn primary">Open project</button>
+                                <button class="slide-btn secondary">Live site</button>
+                            </div>
+                        </div>
+
+                        <p class="slide-tagline">Trusted European agency for premium elderly care.</p>
+
+                        <div class="slide-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Industry:</span>
+                                <span class="info-value">Elderly Care</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tools:</span>
+                                <span class="info-value">Adobe Stack, Webflow, Make</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Stack:</span>
+                                <span class="info-value">Webflow, Make, JavaScript</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI-Assisted:</span>
+                                <span class="info-value">ChatGPT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide scroll-animate" data-project="ges">
+                    <div class="slide-image">
+                        <img src="images/ges.png" alt="GES project screenshot">
+                    </div>
+
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-meta">
+                                <span class="slide-name">GES</span>
+                                <span class="slide-separator">|</span>
+                                <span class="slide-year">2024</span>
+                            </div>
+                            <div class="slide-buttons">
+                                <button class="slide-btn primary">Open project</button>
+                                <button class="slide-btn secondary">Live site</button>
+                            </div>
+                        </div>
+
+                        <p class="slide-tagline">Brand website for hydraulics and construction company</p>
+
+                        <div class="slide-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Industry:</span>
+                                <span class="info-value">Hydraulics and construction</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tools:</span>
+                                <span class="info-value">Figma, Adobe Stack, Webflow</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Stack:</span>
+                                <span class="info-value">Webflow, JavaScript</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI-Assisted:</span>
+                                <span class="info-value">ChatGPT, Gemini</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-slide scroll-animate" data-project="cherry-detailing">
+                    <div class="slide-image">
+                        <img src="images/cherry/cherry_detailing_cover.webp" alt="Cherry Detailing project screenshot">
+                    </div>
+
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-meta">
+                                <span class="slide-name">Cherry Detailing</span>
+                                <span class="slide-separator">|</span>
+                                <span class="slide-year">2024</span>
+                            </div>
+                            <div class="slide-buttons">
+                                <button class="slide-btn primary">Open project</button>
+                                <button class="slide-btn secondary">Live site</button>
+                            </div>
+                        </div>
+
+                        <p class="slide-tagline">Brand website for premium auto detailing studio</p>
+
+                        <div class="slide-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Industry:</span>
+                                <span class="info-value">Auto detailing services</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Tools:</span>
+                                <span class="info-value">Figma, Adobe Stack</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Vanilla stack:</span>
+                                <span class="info-value">HTML/CSS/JavaScript</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">AI-Assisted:</span>
+                                <span class="info-value">Cursor, Claude Code</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Stack Section -->
+    <section class="skill-stack">
+        <div class="skill-container">
+            <!-- Left Column: Orbital Icons -->
+            <div class="skill-orbit-backdrop"></div>
+            <div class="skill-orbit scroll-animate-fade">
+                <!-- Rings Layer -->
+                <div class="orbit-rings">
+                    <div class="orbit-ring ring-1"></div>
+                    <div class="orbit-ring ring-2"></div>
+                    <div class="orbit-ring ring-3"></div>
+                </div>
+                
+                <!-- Icons Layer - above rings and fade -->
+                <div class="orbit-icons">
+                    <!-- Ring 1 Icons -->
+                    <div class="icon-tile" style="--angle: 345deg; --ring: 1;">
+                        <img src="icons/webflow.svg" alt="Webflow" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">Webflow</h4>
+                            <p class="tile-experience">3+ years experience.</p>
+                            <p class="tile-use">Use: No-code development, CMS, client projects.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ring 2 Icons -->
+                    <div class="icon-tile" style="--angle: 80deg; --ring: 2;">
+                        <img src="icons/javascript.svg" alt="JavaScript" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">JavaScript</h4>
+                            <p class="tile-experience">2+ years experience.</p>
+                            <p class="tile-use">Use: Interactive web apps, DOM manipulation, AI-assisted coding.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 130deg; --ring: 2;">
+                        <img src="icons/chatgpt.svg" alt="ChatGPT" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">ChatGPT</h4>
+                            <p class="tile-experience">2+ years experience.</p>
+                            <p class="tile-use">Use: AI-assisted development, code generation, problem solving.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 40deg; --ring: 2;">
+                        <img src="icons/cursor.svg" alt="JavaScript" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">Cursor</h4>
+                            <p class="tile-experience">2+ years experience.</p>
+                            <p class="tile-use">Use: primary development environment,  AI pair programming, rapid iteration,  code completion.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ring 3 Icons -->
+                    <div class="icon-tile" style="--angle: 15deg; --ring: 3;">
+                        <img src="icons/figma.svg" alt="Figma" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">Figma</h4>
+                            <p class="tile-experience">5+ years experience.</p>
+                            <p class="tile-use">Use: UI/UX design, prototyping, design systems.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 100deg; --ring: 1;">
+                        <img src="icons/adobe.svg" alt="Adobe" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">Adobe Stack</h4>
+                            <p class="tile-experience">5+ years experience.</p>
+                            <p class="tile-use">Use: branding, graphics, image optimization, visual assets, layout design, photo editing.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 50deg; --ring: 3;">
+                        <img src="icons/css-3.svg" alt="CSS" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">CSS</h4>
+                            <p class="tile-experience">5+ years experience.</p>
+                            <p class="tile-use">Use: Styling, animations, responsive design, modern layouts.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 100deg; --ring: 3;">
+                        <img src="icons/claude.svg" alt="JavaScript" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">Claude</h4>
+                            <p class="tile-experience">1+ years experience.</p>
+                            <p class="tile-use">Use: AI-assisted development, code generation, debugging, rapid prototyping.</p>
+                        </div>
+                    </div>
+                    <div class="icon-tile" style="--angle: 330deg; --ring: 3;">
+                        <img src="icons/html.svg" alt="HTML" class="tile-icon">
+                        <div class="tile-content">
+                            <h4 class="tile-name">HTML</h4>
+                            <p class="tile-experience">5+ years experience.</p>
+                            <p class="tile-use">Use: Semantic markup, accessibility, SEO optimization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Content -->
+            <div class="skill-content scroll-animate">
+                <h2 class="skill-title">The skill stack</h2>
+                <p class="skill-subtitle">My toolkit for building modern web experiences from concept to launch.</p>
+
+                <div class="skill-grid scroll-animate">
+                    <div class="skill-card">
+                        <h3 class="card-title">Design</h3>
+                        <ul class="card-list">
+                            <li>Figma</li>
+                            <li>Adobe Creative Suite</li>
+                            <li>UI/UX principles</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h3 class="card-title">Development</h3>
+                        <ul class="card-list">
+                            <li>Webflow</li>
+                            <li>HTML/CSS</li>
+                            <li>JavaScript (AI-assisted)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h3 class="card-title">Tools & Workflow</h3>
+                        <ul class="card-list">
+                            <li>AI-assisted development (Claude, Cursor)</li>
+                            <li>Make.com (automation)</li>
+                            <li>Git/GitHub</li>
+                            <li>Project management</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h3 class="card-title">Soft skills</h3>
+                        <ul class="card-list">
+                            <li>Client communication</li>
+                            <li>Project leadership</li>
+                            <li>Rapid prototyping</li>
+                            <li>Problem-solving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-me">
+        <div class="about-container">
+            <!-- Left Column: Content -->
+            <div class="about-content scroll-animate">
+                <div class="about-light-flare"></div>
+                <div class="title-wrapper">
+                    <div class="liquid-glass-pill about-glass-pill"></div>
+                    <h2 class="about-title">ABOUT ME</h2>
+                </div>
+                
+                <p class="about-text">
+                    I'm Hubert, a 23-year-old web developer and creative director based between Poland and Spain. I've spent the last few years building websites, leading projects, and figuring out how to turn ideas into functional digital products.
+                </p>
+                
+                <p class="about-text">
+                    I started experimenting with web development at 20, taught myself to code, and eventually expanded into project management and creative direction. I work across the full spectrum - from writing HTML/CSS/JS to managing timelines and shaping visual direction.
+                </p>
+                
+                <a href="#contact" class="about-cta">
+                    <span class="icon-mask">
+                        <span class="icon-track">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--primary">
+                                <path d="M7 7h10v10"/>
+                                <path d="M7 17 17 7"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
+                                <path d="M7 7h10v10"/>
+                                <path d="M7 17 17 7"/>
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="cta-text">Send me a message</span>
+                </a>
+            </div>
+            
+            <!-- Right Column: Photo -->
+            <div class="about-image scroll-animate-fade">
+                <div class="about-image-inner">
+                    <img src="images/on-chair-yo.jpg" alt="Hubert - Web Developer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-header scroll-animate">
+                <div class="title-wrapper">
+                    <div class="liquid-glass-pill contact-glass-pill"></div>
+                    <h2 class="contact-title">LET'S GET IN TOUCH</h2>
+                </div>
+            </div>
+            
+            <form class="contact-form scroll-animate" action="https://formspree.io/f/xgvpbqkw" method="POST">
+                <!-- Honeypot field for spam protection -->
+                <input type="text" name="_gotcha" style="display:none">
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="company">Company name <span class="optional">(optional)</span></label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="phone">Phone <span class="optional">(optional)</span></label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">E-mail address</label>
+                        <input type="email" id="email" name="_replyto" required>
+                    </div>
+                </div>
+
+                <div class="form-field full-width">
+                    <label for="interest">What are you interested in?</label>
+                    <select id="interest" name="interest" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Web Design">Web Design</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Branding & Identity">Branding & Identity</option>
+                        <option value="Full Website Project">Full Website Project</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-field full-width">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="1" required></textarea>
+                </div>
+                
+                <div class="form-consent">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I consent to the processing of my personal data in accordance with GDPR/RODO for the purpose of responding to my inquiry.</label>
+                </div>
+                
+                <button type="submit" class="form-submit">
+                    <span class="icon-mask">
+                        <span class="icon-track">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--primary">
+                                <path d="M7 7h10v10"/>
+                                <path d="M7 17 17 7"/>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
+                                <path d="M7 7h10v10"/>
+                                <path d="M7 17 17 7"/>
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="submit-text">Send message</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-background-text">hello@zakrzewskihubert.com</div>
+        <div class="footer-content">
+            <div class="footer-copyright">2025 © Zakrzewski Hubert Portfolio | All rights reserved.</div>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/hubert-zakrzewski-358b77289/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-panel">
+            <button class="project-modal-close" id="modalClose">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="project-modal-content" id="modalContent">
+                <!-- Project content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Development Popup -->
+    <div class="dev-popup" id="devPopup">
+        <span class="dev-popup-text">In development...</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

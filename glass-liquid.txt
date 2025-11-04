@@ -1,0 +1,26 @@
+// CSS 1. The CSS filter Property
+
+.card {
+  /* Slightly increase brightness */
+  filter: brightness(1.1) 
+          
+          /* Optional: Add blur for a frosted look */
+          blur(4px) 
+          
+          /* Essential: Points to the SVG filter ID */
+          url('#displacement-filter');
+}
+
+// XML 2. The SVG Displacement Map Filter
+
+<svg>
+  <filter id="displacement-filter">
+  
+    <feImage href="data:image/png;base64,..." />
+    
+    <feDisplacementMap 
+        in="SourceGraphic" 
+        scale="30" xChannelSelector="R" yChannelSelector="G" />
+    
+  </filter>
+</svg>
