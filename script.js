@@ -1212,3 +1212,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+/* ============================================ */
+/* COOKIE CONSENT BANNER */
+/* ============================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const declineBtn = document.getElementById('cookieDecline');
+
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem('cookieConsent');
+
+    if (!cookieConsent) {
+        // Show banner after a short delay for better UX
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1000);
+    }
+
+    // Handle Accept button
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            // Save consent
+            localStorage.setItem('cookieConsent', 'accepted');
+
+            // Hide banner
+            cookieBanner.classList.remove('show');
+
+            // Load Google Analytics
+            if (typeof loadGoogleAnalytics === 'function') {
+                loadGoogleAnalytics();
+            }
+
+            // Optional: Track consent acceptance
+            if (typeof gtag === 'function') {
+                gtag('event', 'cookie_consent', {
+                    'consent_action': 'accepted'
+                });
+            }
+        });
+    }
+
+    // Handle Decline button
+    if (declineBtn) {
+        declineBtn.addEventListener('click', () => {
+            // Save decline
+            localStorage.setItem('cookieConsent', 'declined');
+
+            // Hide banner
+            cookieBanner.classList.remove('show');
+
+            // Optional: You might want to disable any analytics here
+            console.log('User declined cookie consent');
+        });
+    }
+});

@@ -45,14 +45,35 @@
     <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QRCWQG2FNW"></script>
-<script>
+<!-- Google tag (gtag.js) - Loaded after cookie consent -->
+<script id="google-analytics-script">
+  // This will be initialized by the cookie consent handler
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-QRCWQG2FNW');
+  // Check if user has consented to analytics
+  function initializeAnalytics() {
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+      loadGoogleAnalytics();
+    }
+  }
+
+  function loadGoogleAnalytics() {
+    // Load gtag.js script
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-QRCWQG2FNW';
+    document.head.appendChild(script);
+
+    // Initialize GA4
+    gtag('js', new Date());
+    gtag('config', 'G-QRCWQG2FNW', {
+      'anonymize_ip': true
+    });
+  }
+
+  // Initialize on page load
+  initializeAnalytics();
 </script>
 
 <body>
@@ -669,6 +690,24 @@
     <!-- Development Popup -->
     <div class="dev-popup" id="devPopup">
         <span class="dev-popup-text">In development...</span>
+    </div>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <p class="cookie-banner-title">We value your privacy</p>
+                <p class="cookie-banner-description">
+                    This website uses cookies to analyze traffic and improve your experience.
+                    By clicking "Accept", you consent to our use of cookies.
+                    <a href="privacy-policy.html" class="cookie-banner-link">Learn more</a>
+                </p>
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
