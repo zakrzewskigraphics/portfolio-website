@@ -2138,32 +2138,15 @@ html, body {
     position: relative;
     background: var(--bg-primary);
     padding: 120px 80px 60px 80px;
-    overflow: hidden;
-}
-
-.footer-background-text-link {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-decoration: none;
-    z-index: 10;
-    pointer-events: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.footer-background-text-link:hover {
-    transform: translate(-50%, -50%) translateY(-5px);
-}
-
-.footer-background-text-link:hover .footer-background-text {
-    opacity: 0.10;
 }
 
 .footer-background-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: 'Condenso', sans-serif;
-    font-size: clamp(36px, 10vw, 240px);
+    font-size: clamp(80px, 13.4vw, 360px);
     font-weight: normal;
     text-transform: uppercase;
     line-height: 0.9;
@@ -2173,7 +2156,8 @@ html, body {
     user-select: none;
     max-width: calc(100vw - 160px);
     text-align: center;
-    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .footer-content {
@@ -2227,9 +2211,9 @@ html, body {
     }
     
     .footer-background-text {
-        font-size: clamp(28px, 8vw, 52px);
+        font-size: clamp(40px, 12vw, 80px);
         max-width: calc(100vw - 48px);
-        z-index: 10;
+        bottom: 40px;
     }
 }
 
