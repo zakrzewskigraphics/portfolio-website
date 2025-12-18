@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://formspree.io https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'self' https://unpkg.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://formspree.io https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline'; style-src 'self' https://unpkg.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://formspree.io https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://region1.google-analytics.com; base-uri 'self'; form-action 'self' https://formspree.io;">
 
     <!-- Primary Meta Tags -->
     <title>Zakrzewski Hubert - Web Developer & Project Manager Portfolio</title>
     <meta name="title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
-    <meta name="description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. Based between Poland and Spain. View my portfolio of delivered projects.">
-    <meta name="keywords" content="web developer, project manager, webflow developer, portfolio, web design, low-code development, AI-assisted development">
+    <meta name="description"
+        content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. Based between Poland and Spain. View my portfolio of delivered projects.">
+    <meta name="keywords"
+        content="web developer, project manager, webflow developer, portfolio, web design, low-code development, AI-assisted development">
     <meta name="author" content="Hubert Zakrzewski">
     <meta name="theme-color" content="#151515">
     <link rel="canonical" href="https://zakrzewskihubert.com/">
@@ -18,7 +22,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zakrzewskihubert.com/">
     <meta property="og:title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
-    <meta property="og:description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
+    <meta property="og:description"
+        content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
     <meta property="og:image" content="https://zakrzewskihubert.com/images/open_graph_image.webp">
     <meta property="og:image:type" content="image/webp">
     <meta property="og:image:width" content="1200">
@@ -29,7 +34,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://zakrzewskihubert.com/">
     <meta name="twitter:title" content="Zakrzewski Hubert - Web Developer & Project Manager Portfolio">
-    <meta name="twitter:description" content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
+    <meta name="twitter:description"
+        content="Web developer and project manager specializing in modern websites, Webflow development, and AI-assisted coding. View my portfolio of delivered projects.">
     <meta name="twitter:image" content="https://zakrzewskihubert.com/images/open_graph_image.webp">
 
     <!-- Stylesheets -->
@@ -40,39 +46,43 @@
     <link rel="icon" href="images/zakrzewski_hubert_logo.webp" sizes="any" type="image/webp">
     <link rel="shortcut icon" href="images/zakrzewski_hubert_logo.webp" type="image/webp">
     <link rel="apple-touch-icon" href="images/zakrzewski_hubert_logo.webp">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 
     <!-- Google tag (gtag.js) - Loaded after cookie consent -->
     <script id="google-analytics-script">
-      // This will be initialized by the cookie consent handler
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+        // This will be initialized by the cookie consent handler
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
 
-      // Check if user has consented to analytics
-      function initializeAnalytics() {
-        if (localStorage.getItem('cookieConsent') === 'accepted') {
-          loadGoogleAnalytics();
+        // Check if user has consented to analytics
+        function initializeAnalytics() {
+            if (localStorage.getItem('cookieConsent') === 'accepted') {
+                loadGoogleAnalytics();
+            }
         }
-      }
 
-      function loadGoogleAnalytics() {
-        // Load gtag.js script
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-QRCWQG2FNW';
-        document.head.appendChild(script);
+        function loadGoogleAnalytics() {
+            // Load gtag.js script
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-QRCWQG2FNW';
+            document.head.appendChild(script);
 
-        // Initialize GA4
-        gtag('js', new Date());
-        gtag('config', 'G-QRCWQG2FNW', {
-          'anonymize_ip': true
-        });
-      }
+            // Initialize GA4
+            gtag('js', new Date());
+            gtag('config', 'G-QRCWQG2FNW', {
+                'anonymize_ip': true
+            });
+        }
 
-      // Initialize on page load
-      initializeAnalytics();
+        // Initialize on page load
+        initializeAnalytics();
     </script>
 </head>
 
@@ -91,25 +101,13 @@
         <defs>
             <filter id="liquid-glass-filter" x="-50%" y="-50%" width="200%" height="200%">
                 <!-- Turbulence creates the organic liquid texture -->
-                <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.02"
-                    numOctaves="3"
-                    result="turbulence">
-                    <animate
-                        attributeName="baseFrequency"
-                        values="0.02;0.025;0.02"
-                        dur="8s"
-                        repeatCount="indefinite"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turbulence">
+                    <animate attributeName="baseFrequency" values="0.02;0.025;0.02" dur="8s" repeatCount="indefinite" />
                 </feTurbulence>
 
                 <!-- Displacement creates the liquid distortion -->
-                <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="turbulence"
-                    scale="8"
-                    xChannelSelector="R"
-                    yChannelSelector="G"/>
+                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="8" xChannelSelector="R"
+                    yChannelSelector="G" />
             </filter>
         </defs>
     </svg>
@@ -117,14 +115,14 @@
     <section class="hero">
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
-        
+
         <div class="hero-content">
             <p class="hero-caption">HELLO, MY NAME IS</p>
             <div class="title-wrapper">
                 <div class="liquid-glass-pill hero-glass-pill"></div>
                 <h1 class="hero-title" data-splitting>HUBERT ZAKRZEWSKI</h1>
             </div>
-            
+
             <div class="role-loop">
                 <div class="role-loop-track">
                     <div class="role-group">
@@ -154,21 +152,26 @@
                 </div>
                 <div class="role-loop-gradient"></div>
             </div>
-            
+
             <p class="hero-body" data-splitting="words">
-                I'm a web developer and project manager who builds functional websites and leads them from concept to completion. I work with code, design tools, and modern workflows to deliver projects that ship.
+                I'm a web developer and project manager who builds functional websites and leads them from concept to
+                completion. I work with code, design tools, and modern workflows to deliver projects that ship.
             </p>
-            
+
             <a href="#selected-work" class="hero-cta">
                 <span class="icon-mask">
                     <span class="icon-track">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--primary">
-                            <path d="M7 7h10v10"/>
-                            <path d="M7 17 17 7"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="cta-icon icon-arrow icon-arrow--primary">
+                            <path d="M7 7h10v10" />
+                            <path d="M7 17 17 7" />
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
-                            <path d="M7 7h10v10"/>
-                            <path d="M7 17 17 7"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="cta-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
+                            <path d="M7 7h10v10" />
+                            <path d="M7 17 17 7" />
                         </svg>
                     </span>
                 </span>
@@ -231,7 +234,7 @@
                     <div class="slide-image">
                         <img src="images/aswent.png" alt="ASWENT project screenshot">
                     </div>
-                    
+
                     <div class="slide-content">
                         <div class="slide-header">
                             <div class="slide-meta">
@@ -244,9 +247,9 @@
                                 <button class="slide-btn secondary">Live site</button>
                             </div>
                         </div>
-                        
+
                         <p class="slide-tagline">Brand website for 20+ year engineering firm</p>
-                        
+
                         <div class="slide-info-grid">
                             <div class="info-item">
                                 <span class="info-label">Industry:</span>
@@ -272,7 +275,7 @@
                     <div class="slide-image">
                         <img src="images/tintara.png" alt="Tintara project screenshot">
                     </div>
-                    
+
                     <div class="slide-content">
                         <div class="slide-header">
                             <div class="slide-meta">
@@ -285,9 +288,9 @@
                                 <button class="slide-btn secondary">Live site</button>
                             </div>
                         </div>
-                        
+
                         <p class="slide-tagline">Brand website for 20+ year engineering firm</p>
-                        
+
                         <div class="slide-info-grid">
                             <div class="info-item">
                                 <span class="info-label">Industry:</span>
@@ -447,7 +450,7 @@
                     <div class="orbit-ring ring-2"></div>
                     <div class="orbit-ring ring-3"></div>
                 </div>
-                
+
                 <!-- Icons Layer - above rings and fade -->
                 <div class="orbit-icons">
                     <!-- Ring 1 Icons -->
@@ -459,7 +462,7 @@
                             <p class="tile-use">Use: No-code development, CMS, client projects.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Ring 2 Icons -->
                     <div class="icon-tile" style="--angle: 80deg; --ring: 2;">
                         <img src="icons/javascript.svg" alt="JavaScript" class="tile-icon">
@@ -482,10 +485,11 @@
                         <div class="tile-content">
                             <h4 class="tile-name">Cursor</h4>
                             <p class="tile-experience">2+ years experience.</p>
-                            <p class="tile-use">Use: primary development environment,  AI pair programming, rapid iteration,  code completion.</p>
+                            <p class="tile-use">Use: primary development environment, AI pair programming, rapid
+                                iteration, code completion.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Ring 3 Icons -->
                     <div class="icon-tile" style="--angle: 15deg; --ring: 3;">
                         <img src="icons/figma.svg" alt="Figma" class="tile-icon">
@@ -500,7 +504,8 @@
                         <div class="tile-content">
                             <h4 class="tile-name">Adobe Stack</h4>
                             <p class="tile-experience">5+ years experience.</p>
-                            <p class="tile-use">Use: branding, graphics, image optimization, visual assets, layout design, photo editing.</p>
+                            <p class="tile-use">Use: branding, graphics, image optimization, visual assets, layout
+                                design, photo editing.</p>
                         </div>
                     </div>
                     <div class="icon-tile" style="--angle: 50deg; --ring: 3;">
@@ -516,7 +521,8 @@
                         <div class="tile-content">
                             <h4 class="tile-name">Claude</h4>
                             <p class="tile-experience">1+ years experience.</p>
-                            <p class="tile-use">Use: AI-assisted development, code generation, debugging, rapid prototyping.</p>
+                            <p class="tile-use">Use: AI-assisted development, code generation, debugging, rapid
+                                prototyping.</p>
                         </div>
                     </div>
                     <div class="icon-tile" style="--angle: 330deg; --ring: 3;">
@@ -529,7 +535,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right Column: Content -->
             <div class="skill-content scroll-animate">
                 <h2 class="skill-title">The skill stack</h2>
@@ -544,7 +550,7 @@
                             <li>UI/UX principles</li>
                         </ul>
                     </div>
-                    
+
                     <div class="skill-card">
                         <h3 class="card-title">Development</h3>
                         <ul class="card-list">
@@ -553,7 +559,7 @@
                             <li>JavaScript (AI-assisted)</li>
                         </ul>
                     </div>
-                    
+
                     <div class="skill-card">
                         <h3 class="card-title">Tools & Workflow</h3>
                         <ul class="card-list">
@@ -563,7 +569,7 @@
                             <li>Project management</li>
                         </ul>
                     </div>
-                    
+
                     <div class="skill-card">
                         <h3 class="card-title">Soft skills</h3>
                         <ul class="card-list">
@@ -588,32 +594,41 @@
                     <div class="liquid-glass-pill about-glass-pill"></div>
                     <h2 class="about-title">ABOUT ME</h2>
                 </div>
-                
+
                 <p class="about-text">
-                    I'm Hubert, a 23-year-old web developer and creative director based between Poland and Spain. I've spent the last few years building websites, leading projects, and figuring out how to turn ideas into functional digital products.
+                    I'm Hubert, a 23-year-old web developer and creative director based between Poland and Spain. I've
+                    spent the last few years building websites, leading projects, and figuring out how to turn ideas
+                    into functional digital products.
                 </p>
-                
+
                 <p class="about-text">
-                    I started experimenting with web development at 20, taught myself to code, and eventually expanded into project management and creative direction. I work across the full spectrum - from writing HTML/CSS/JS to managing timelines and shaping visual direction.
+                    I started experimenting with web development at 20, taught myself to code, and eventually expanded
+                    into project management and creative direction. I work across the full spectrum - from writing
+                    HTML/CSS/JS to managing timelines and shaping visual direction.
                 </p>
-                
+
                 <a href="#contact" class="about-cta">
                     <span class="icon-mask">
                         <span class="icon-track">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--primary">
-                                <path d="M7 7h10v10"/>
-                                <path d="M7 17 17 7"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--primary">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
                             </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
-                                <path d="M7 7h10v10"/>
-                                <path d="M7 17 17 7"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="cta-icon icon-arrow icon-arrow--secondary"
+                                aria-hidden="true">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
                             </svg>
                         </span>
                     </span>
                     <span class="cta-text">Send me a message</span>
                 </a>
             </div>
-            
+
             <!-- Right Column: Photo -->
             <div class="about-image scroll-animate-fade">
                 <div class="about-image-inner">
@@ -632,7 +647,7 @@
                     <h2 class="contact-title">LET'S GET IN TOUCH</h2>
                 </div>
             </div>
-            
+
             <form class="contact-form scroll-animate" action="https://formspree.io/f/xgvpbqkw" method="POST">
                 <!-- Honeypot field for spam protection -->
                 <input type="text" name="_gotcha" style="display:none">
@@ -675,22 +690,28 @@
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="1" required></textarea>
                 </div>
-                
+
                 <div class="form-consent">
                     <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent">I consent to the processing of my personal data in accordance with GDPR/RODO for the purpose of responding to my inquiry.</label>
+                    <label for="consent">I consent to the processing of my personal data in accordance with GDPR/RODO
+                        for the purpose of responding to my inquiry.</label>
                 </div>
-                
+
                 <button type="submit" class="form-submit">
                     <span class="icon-mask">
                         <span class="icon-track">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--primary">
-                                <path d="M7 7h10v10"/>
-                                <path d="M7 17 17 7"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--primary">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
                             </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--secondary" aria-hidden="true">
-                                <path d="M7 7h10v10"/>
-                                <path d="M7 17 17 7"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--secondary"
+                                aria-hidden="true">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
                             </svg>
                         </span>
                     </span>
@@ -705,7 +726,8 @@
         <div class="footer-content">
             <div class="footer-copyright">2025 © Zakrzewski Hubert Portfolio | All rights reserved.</div>
             <div class="footer-links">
-                <a href="https://www.linkedin.com/in/hubert-zakrzewski-358b77289/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/hubert-zakrzewski-358b77289/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
                 <a href="mailto:zakrzewskihubert55@gmail.com">Email</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
             </div>
@@ -716,7 +738,8 @@
     <div class="project-modal" id="projectModal">
         <div class="project-modal-panel">
             <button class="project-modal-close" id="modalClose">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -752,4 +775,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
