@@ -2471,7 +2471,7 @@ html, body {
 
 .project-row-1 .image-clip {
     width: 100%;
-    height: 500px;
+    height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2512,7 +2512,7 @@ html, body {
 /* ROW 2: Full-width image */
 .project-row-2 .image-clip {
     width: 100%;
-    height: 600px;
+    height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2566,7 +2566,7 @@ html, body {
 
 .project-row-3 .image-clip {
     width: 100%;
-    height: 400px;
+    height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2587,7 +2587,7 @@ html, body {
 
 .project-row-4 .image-clip {
     width: 100%;
-    height: 400px;
+    height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2659,7 +2659,7 @@ html, body {
 
 .project-row-5 .image-clip {
     width: 100%;
-    height: 350px;
+    height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2793,7 +2793,7 @@ html, body {
 .project-row-6 .image-clip {
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 640px;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -2808,7 +2808,7 @@ html, body {
 /* ROW 7: Full-width large visual */
 .project-row-7 .image-clip {
     width: 100%;
-    height: 600px;
+    height: 640px;
     border-radius: 24px;
     overflow: hidden;
 }

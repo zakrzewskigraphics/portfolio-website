@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Contact form submission - Formspree integration
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -297,30 +297,30 @@ class FiniteCarousel {
         this.track = track;
         this.slides = [...track.querySelectorAll('.carousel-slide')];
         this.currentIndex = 0;
-        
+
         this.isDragging = false;
         this.startX = 0;
         this.currentX = 0;
         this.dragStartX = 0;
         this.hasMoved = false;
-        
+
         this.slideWidth = this.slides[0]?.offsetWidth || 0;
         this.gap = 20;
-        
+
         this.init();
     }
-    
+
     init() {
         // Mouse events
         this.viewport.addEventListener('mousedown', this.onDragStart.bind(this));
         document.addEventListener('mousemove', this.onDragMove.bind(this));
         document.addEventListener('mouseup', this.onDragEnd.bind(this));
-        
+
         // Touch events
         this.viewport.addEventListener('touchstart', this.onDragStart.bind(this), { passive: true });
         document.addEventListener('touchmove', this.onDragMove.bind(this), { passive: false });
         document.addEventListener('touchend', this.onDragEnd.bind(this));
-        
+
         // Prevent clicks during drag
         this.slides.forEach(slide => {
             slide.addEventListener('click', (e) => {
@@ -330,43 +330,43 @@ class FiniteCarousel {
                 }
             });
         });
-        
+
         // Recalculate on resize
         window.addEventListener('resize', () => {
             this.slideWidth = this.slides[0]?.offsetWidth || 0;
             this.snapToIndex(this.currentIndex, false);
         });
     }
-    
+
     onDragStart(e) {
         this.isDragging = true;
         this.hasMoved = false;
         this.viewport.classList.add('dragging');
         this.track.classList.add('no-transition');
-        
+
         this.startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         this.dragStartX = this.getCurrentTranslate();
     }
-    
+
     onDragMove(e) {
         if (!this.isDragging) return;
-        
+
         const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         const diff = currentX - this.startX;
-        
+
         if (Math.abs(diff) > 3) {
             this.hasMoved = true;
             if (e.cancelable) {
                 e.preventDefault();
             }
         }
-        
+
         let newTranslate = this.dragStartX + diff;
-        
+
         // Edge resistance
         const maxTranslate = 0;
         const minTranslate = -(this.slideWidth + this.gap) * (this.slides.length - 1);
-        
+
         if (newTranslate > maxTranslate) {
             const excess = newTranslate - maxTranslate;
             newTranslate = maxTranslate + excess * 0.25;
@@ -374,21 +374,21 @@ class FiniteCarousel {
             const excess = minTranslate - newTranslate;
             newTranslate = minTranslate - excess * 0.25;
         }
-        
+
         this.track.style.transform = `translateX(${newTranslate}px)`;
     }
-    
+
     onDragEnd(e) {
         if (!this.isDragging) return;
-        
+
         this.isDragging = false;
         this.viewport.classList.remove('dragging');
         this.track.classList.remove('no-transition');
-        
+
         const currentTranslate = this.getCurrentTranslate();
         const diff = currentTranslate - this.dragStartX;
         const threshold = this.slideWidth * 0.15;
-        
+
         if (Math.abs(diff) > threshold) {
             if (diff > 0 && this.currentIndex > 0) {
                 this.currentIndex--;
@@ -396,31 +396,31 @@ class FiniteCarousel {
                 this.currentIndex++;
             }
         }
-        
+
         this.snapToIndex(this.currentIndex);
-        
+
         setTimeout(() => {
             this.hasMoved = false;
         }, 100);
     }
-    
+
     getCurrentTranslate() {
         const transform = window.getComputedStyle(this.track).transform;
         if (transform === 'none') return 0;
         const matrix = transform.match(/matrix.*\((.+)\)/)[1].split(', ');
         return parseFloat(matrix[4]);
     }
-    
+
     snapToIndex(index, animate = true) {
         const targetTranslate = -(this.slideWidth + this.gap) * index;
-        
+
         if (!animate) {
             this.track.classList.add('no-transition');
         }
-        
+
         this.track.style.transform = `translateX(${targetTranslate}px)`;
         this.currentIndex = index;
-        
+
         if (!animate) {
             setTimeout(() => {
                 this.track.classList.remove('no-transition');
@@ -433,14 +433,14 @@ class FiniteCarousel {
 document.addEventListener('DOMContentLoaded', () => {
     const viewport = document.querySelector('.carousel-viewport');
     const track = document.querySelector('.carousel-track');
-    
+
     if (viewport && track) {
         new FiniteCarousel(viewport, track);
     }
-    
+
     // Button text animation - split text into letters
     const animateButtons = document.querySelectorAll('.slide-btn, .hero-cta, .about-cta, .form-submit');
-    
+
     animateButtons.forEach((button) => {
         // Skip if it's the hero CTA or about CTA (already has text splitting from earlier code)
         if (button.classList.contains('hero-cta') || button.classList.contains('about-cta')) {
@@ -448,12 +448,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (textSpan && textSpan.innerText && !textSpan.querySelector('.block')) {
                 let innerText = textSpan.innerText;
                 textSpan.innerHTML = "";
-                
+
                 // Create wrapper for vertical stacking
                 let wrapper = document.createElement("div");
                 wrapper.style.display = "flex";
                 wrapper.style.flexDirection = "column";
-                
+
                 // Create first block
                 let textContainer1 = document.createElement("div");
                 textContainer1.classList.add("block");
@@ -463,10 +463,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     span.classList.add("letter");
                     textContainer1.appendChild(span);
                 }
-                
+
                 // Clone for second block
                 let textContainer2 = textContainer1.cloneNode(true);
-                
+
                 wrapper.appendChild(textContainer1);
                 wrapper.appendChild(textContainer2);
                 textSpan.appendChild(wrapper);
@@ -477,12 +477,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (textSpan && textSpan.innerText && !textSpan.querySelector('.block')) {
                 let innerText = textSpan.innerText;
                 textSpan.innerHTML = "";
-                
+
                 // Create wrapper for vertical stacking
                 let wrapper = document.createElement("div");
                 wrapper.style.display = "flex";
                 wrapper.style.flexDirection = "column";
-                
+
                 // Create first block
                 let textContainer1 = document.createElement("div");
                 textContainer1.classList.add("block");
@@ -492,10 +492,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     span.classList.add("letter");
                     textContainer1.appendChild(span);
                 }
-                
+
                 // Clone for second block
                 let textContainer2 = textContainer1.cloneNode(true);
-                
+
                 wrapper.appendChild(textContainer1);
                 wrapper.appendChild(textContainer2);
                 textSpan.appendChild(wrapper);
@@ -505,11 +505,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (button.innerText && !button.querySelector('.block')) {
                 let innerText = button.innerText;
                 button.innerHTML = "";
-                
+
                 // Create wrapper for vertical stacking
                 let wrapper = document.createElement("div");
                 wrapper.classList.add("btn-text-wrapper");
-                
+
                 // Create first block
                 let textContainer1 = document.createElement("div");
                 textContainer1.classList.add("block");
@@ -519,10 +519,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     span.classList.add("letter");
                     textContainer1.appendChild(span);
                 }
-                
+
                 // Clone for second block
                 let textContainer2 = textContainer1.cloneNode(true);
-                
+
                 wrapper.appendChild(textContainer1);
                 wrapper.appendChild(textContainer2);
                 button.appendChild(wrapper);
@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- ROW 1: Image left, Text right -->
                 <div class="project-row project-row-1">
                     <div class="image-clip reveal-text">
-                        <img src="images/aswent/worker.png" alt="ASWENT Worker">
+                        <img src="images/aswent/worker.webp" alt="ASWENT Worker">
                     </div>
                     <div class="text-block">
                         <h1 class="reveal-text">ASWENT™</h1>
@@ -565,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- ROW 2: Full-width image -->
                 <div class="project-row project-row-2">
                     <div class="image-clip">
-                        <img src="images/aswent/logo-in-flare.png" alt="ASWENT Logo">
+                        <img src="images/aswent/logo-in-flare.webp" alt="ASWENT Logo">
                     </div>
                 </div>
 
@@ -581,14 +581,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     </div>
                     <div class="image-clip">
-                        <img src="images/aswent/aswent-logo.png" alt="ASWENT Logo">
+                        <img src="images/aswent/aswent-logo.webp" alt="ASWENT Logo">
                     </div>
                 </div>
 
                 <!-- ROW 4: Image left, Heading + paragraph right -->
                 <div class="project-row project-row-4">
                     <div class="image-clip">
-                        <img src="images/aswent/aswent-cards.png" alt="ASWENT Business Cards">
+                        <img src="images/aswent/aswent-cards.webp" alt="ASWENT Business Cards">
                     </div>
                     <div class="text-block">
                         <h3>Brand Applications</h3>
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                     </div>
                     <div class="image-clip">
-                        <img src="images/aswent/aswent-tshirt.png" alt="ASWENT T-Shirt">
+                        <img src="images/aswent/aswent-tshirt.webp" alt="ASWENT T-Shirt">
                     </div>
                 </div>
 
@@ -680,14 +680,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <!-- Visual -->
                     <div class="image-clip">
-                        <img src="images/aswent/aswent-workers.png" alt="ASWENT Project Visual">
+                        <img src="images/aswent/aswent-workers.webp" alt="ASWENT Project Visual">
                     </div>
                 </div>
 
                 <!-- ROW 7: Full-width large visual -->
                 <div class="project-row project-row-7">
                     <div class="image-clip">
-                        <img src="images/aswent/light-box.png" alt="ASWENT Light Box">
+                        <img src="images/aswent/light-box.webp" alt="ASWENT Light Box">
                     </div>
                 </div>
 
@@ -1073,6 +1073,160 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>© 2025 All rights reserved</p>
                 </div>
             `
+        },
+        'finizen': {
+            title: 'Finizen',
+            year: '2025',
+            tagline: 'Productivity app with pomodoro timer and goal tracking',
+            content: `
+                <!-- ROW 1: Image left, Text right -->
+                <div class="project-row project-row-1">
+                    <div class="image-clip reveal-text">
+                        <img src="images/finizen/finizen_opening_cover.webp" alt="Finizen App Interface">
+                    </div>
+                    <div class="text-block">
+                        <h1 class="reveal-text">FINIZEN</h1>
+                        <h2 class="reveal-text">Product Design & Development / 2025</h2>
+                        <h2 class="reveal-text">Type: Productivity & Time Management App</h2>
+                        <p class="reveal-text">A comprehensive productivity application that combines goal tracking, pomodoro time blocking, and ambient soundscapes to help users stay focused and measure their progress in real-time.</p>
+                    </div>
+                </div>
+
+                <!-- ROW 2: Full-width image -->
+                <div class="project-row project-row-2">
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_image_1.webp" alt="Finizen App Dashboard">
+                    </div>
+                </div>
+
+                <!-- ROW 3: Heading + list left, Image right -->
+                <div class="project-row project-row-3">
+                    <div class="text-block">
+                        <h3>The Challenge</h3>
+                        <ul>
+                            <li>Create intuitive time tracking that doesn't interrupt workflow</li>
+                            <li>Build flexible goal system supporting both monthly and daily objectives</li>
+                            <li>Design bilingual interface (Polish/English) with seamless language switching</li>
+                            <li>Integrate ambient sound selection without cluttering the minimal UI</li>
+                        </ul>
+                    </div>
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_goals_and_limits.webp" alt="Finizen Goals Interface">
+                    </div>
+                </div>
+
+                <!-- ROW 4: Image left, Heading + paragraph right -->
+                <div class="project-row project-row-4">
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_black_mode.webp" alt="Finizen Dark Mode">
+                    </div>
+                    <div class="text-block">
+                        <h3>Design Philosophy</h3>
+                        <p>The interface follows a minimal, distraction-free design philosophy with support for both light and dark modes. Every interaction is designed to keep users in flow state, with visual feedback that informs without interrupting focus.</p>
+                    </div>
+                </div>
+
+                <!-- ROW 5: "What We Built" + list left, Image right -->
+                <div class="project-row project-row-5">
+                    <div class="text-block">
+                        <h3>What We Built</h3>
+                        <ul>
+                            <li>Pomodoro timer with customizable time blocks</li>
+                            <li>Real-time tracking of hours and minutes spent on tasks</li>
+                            <li>Monthly and daily goal management system</li>
+                            <li>Bilingual interface (Polish/English)</li>
+                            <li>Ambient sound selection for focus enhancement</li>
+                            <li>Responsive design optimized for desktop workflows</li>
+                        </ul>
+                    </div>
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_icon_set.webp" alt="Finizen Icon Set">
+                    </div>
+                </div>
+
+                <!-- ROW 6: Timeline & Details left, Visual right -->
+                <div class="project-row project-row-6">
+                    <div class="details-column">
+                        <!-- Timeline Section -->
+                        <div class="project-timeline-section">
+                            <h3>Timeline</h3>
+                            <div class="timeline-container">
+                                <!-- Phase 1: Concept (20% of total, starts at 0%) -->
+                                <div class="timeline-phase">
+                                    <div class="timeline-phase-header">
+                                        <span class="timeline-phase-name">Concept</span>
+                                        <span class="timeline-phase-duration">1 day</span>
+                                    </div>
+                                    <div class="timeline-phase-track">
+                                        <div class="timeline-phase-bar" style="margin-left: 0%; width: 20%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Phase 2: Design (20% of total, starts at 20%) -->
+                                <div class="timeline-phase">
+                                    <div class="timeline-phase-header">
+                                        <span class="timeline-phase-name">Design</span>
+                                        <span class="timeline-phase-duration">1 day</span>
+                                    </div>
+                                    <div class="timeline-phase-track">
+                                        <div class="timeline-phase-bar" style="margin-left: 20%; width: 20%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Phase 3: Prototype (60% of total, starts at 40%) -->
+                                <div class="timeline-phase">
+                                    <div class="timeline-phase-header">
+                                        <span class="timeline-phase-name">Prototype</span>
+                                        <span class="timeline-phase-duration">3 days</span>
+                                    </div>
+                                    <div class="timeline-phase-track">
+                                        <div class="timeline-phase-bar" style="margin-left: 40%; width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stack Info -->
+                        <div class="project-stack-info">
+                            <div class="stack-info-row">
+                                <span class="stack-info-label">Stack</span>
+                                <span class="stack-info-value">React / JavaScript / Tailwind</span>
+                            </div>
+                            <div class="stack-info-row">
+                                <span class="stack-info-label">AI-Assisted</span>
+                                <span class="stack-info-value">Claude Code, Gemini 3.0</span>
+                            </div>
+                            <div class="stack-info-row">
+                                <span class="stack-info-label">Tools</span>
+                                <span class="stack-info-value">Antigravity, Figma, Netlify</span>
+                            </div>
+                        </div>
+
+                        <!-- Launch Note -->
+                        <p class="project-launch-note">
+                            Launched Q1 2025. Finizen represents a new approach to productivity tools—one that respects your focus while providing the structure needed to accomplish meaningful work.
+                        </p>
+                    </div>
+
+                    <!-- Visual -->
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_ending_cover.webp" alt="Finizen App Overview">
+                    </div>
+                </div>
+
+                <!-- ROW 7: Full-width large visual -->
+                <div class="project-row project-row-7">
+                    <div class="image-clip">
+                        <img src="images/finizen/finizen_cover.webp" alt="Finizen Hero Visual">
+                    </div>
+                </div>
+
+                <!-- ROW 8: Footer -->
+                <div class="project-row project-row-8">
+                    <p>Designed and developed by Hubert Zakrzewski</p>
+                    <p>© 2025 All rights reserved</p>
+                </div>
+            `
         }
     };
 
@@ -1158,6 +1312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle "Live Site" button clicks
     const liveSiteButtons = document.querySelectorAll('.slide-btn.secondary');
     const projectLinks = {
+        'finizen': 'https://finizen.netlify.app',
         'tintara': 'https://www.tintara.pl/',
         'ges': 'https://gesgreen.pl/',
         'lumena': 'https://www.lumenacare.eu/',

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profesjonalna strona internetowa dla kancelarii prawnych - zwiększ liczbę klientów nawet o 1200%">
+    <title>Strona Internetowa dla Prawników - Case Study</title>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Font Declarations - Self-hosted */
+        @font-face {
+            font-family: 'Manrope';
+            src: url('fonts/Manrope-Light.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: 'Manrope';
+            src: url('fonts/Manrope-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: 'Manrope';
+            src: url('fonts/Manrope-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+            font-display: block;
+        }
+
+        @font-face {
+            font-family: 'Manrope';
+            src: url('fonts/Manrope-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: block;
+        }
+
+        /* CSS Variables */
+        :root {
+            --bone-bg: #FAF9F4;
+            --bone-light: #F7F6EF;
+            --bone-dark: #EAE8DF;
+            --midnight-navy: #0A1628;
+            --navy-medium: #1a2332;
+            --navy-light: #2d3848;
+            --text-primary: #151515;
+            --text-secondary: #4A4A4A;
+            --text-tertiary: #7A7A7A;
+            --accent-border: rgba(21, 21, 21, 0.08);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bone-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Grain Effect */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            background-image: url('images/ZTrl.gif');
+            background-repeat: repeat;
+            background-size: auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            padding: 24px 0;
+            background: rgba(250, 249, 244, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--accent-border);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--midnight-navy);
+            letter-spacing: -0.3px;
+        }
+
+        .header-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--bone-light);
+            background: var(--midnight-navy);
+            border: 1px solid var(--midnight-navy);
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--navy-medium);
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+            z-index: -1;
+        }
+
+        .header-cta:hover::before {
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            background: var(--bone-dark);
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            letter-spacing: -1.5px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--bone-light);
+            background: var(--midnight-navy);
+            border: 1px solid var(--midnight-navy);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--navy-medium);
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+            z-index: 0;
+        }
+
+        .cta-button:hover::before {
+            transform: translateY(0);
+        }
+
+        .cta-button span,
+        .cta-button i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--accent-border);
+        }
+
+        .cta-button.secondary::before {
+            background: var(--bone-dark);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: var(--text-tertiary);
+        }
+
+        /* Hero Stats */
+        .hero-stats {
+            background: var(--bone-light);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .hero-stats-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bone-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stat-icon i {
+            width: 20px;
+            height: 20px;
+            color: var(--midnight-navy);
+        }
+
+        .stat-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--midnight-navy);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            padding: 32px 0;
+            border-top: 1px solid var(--accent-border);
+            border-bottom: 1px solid var(--accent-border);
+            background: var(--bone-light);
+        }
+
+        .trust-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--midnight-navy);
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+        }
+
+        .trust-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        section.alt-bg {
+            background: var(--bone-light);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--midnight-navy);
+            background: var(--bone-dark);
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Image Container */
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bone-dark) 0%, var(--bone-light) 100%);
+            border: 1px solid var(--accent-border);
+            margin-bottom: 60px;
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg,
+                rgba(250, 249, 244, 0) 0%,
+                rgba(250, 249, 244, 0.3) 50%,
+                rgba(250, 249, 244, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .placeholder-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .placeholder-content i {
+            width: 48px;
+            height: 48px;
+            color: var(--text-tertiary);
+        }
+
+        .placeholder-content p {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            max-width: 400px;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .comparison-card {
+            background: var(--bone-light);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-tertiary);
+            margin-bottom: 32px;
+        }
+
+        .comparison-header i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .comparison-card.before .comparison-header {
+            color: #C44536;
+        }
+
+        .comparison-card.before .comparison-header i {
+            color: #C44536;
+        }
+
+        .comparison-card.after .comparison-header {
+            color: #2D7D4E;
+        }
+
+        .comparison-card.after .comparison-header i {
+            color: #2D7D4E;
+        }
+
+        .metric-list {
+            list-style: none;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--accent-border);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .metric-change {
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 12px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: #E8F5E9;
+            color: #2D7D4E;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--bone-light);
+            border: 1px solid var(--accent-border);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(21, 21, 21, 0.08);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bone-bg);
+            border: 1px solid var(--accent-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .card-icon i {
+            width: 24px;
+            height: 24px;
+            color: var(--midnight-navy);
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .card-stat {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #C44536;
+            background: rgba(196, 69, 54, 0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        /* Solutions Cards */
+        .solution-card {
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .solution-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 56px;
+            height: 56px;
+            background: var(--midnight-navy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--bone-light);
+        }
+
+        /* ROI Section */
+        .roi-section {
+            padding: 100px 0;
+            background: var(--midnight-navy);
+            color: var(--bone-light);
+            position: relative;
+        }
+
+        .roi-section .section-label {
+            background: rgba(250, 249, 244, 0.1);
+            color: var(--bone-light);
+        }
+
+        .roi-section h2 {
+            color: var(--bone-light);
+        }
+
+        .roi-section .section-description {
+            color: rgba(250, 249, 244, 0.7);
+        }
+
+        .roi-content {
+            max-width: 900px;
+        }
+
+        .roi-calculation {
+            background: rgba(250, 249, 244, 0.05);
+            border: 1px solid rgba(250, 249, 244, 0.1);
+            border-radius: 12px;
+            padding: 48px;
+            margin-top: 48px;
+        }
+
+        .roi-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(250, 249, 244, 0.1);
+        }
+
+        .roi-item:last-child {
+            border-bottom: none;
+            padding-top: 32px;
+            margin-top: 16px;
+            border-top: 2px solid rgba(250, 249, 244, 0.2);
+        }
+
+        .roi-label {
+            font-size: 16px;
+            color: rgba(250, 249, 244, 0.7);
+            font-weight: 500;
+        }
+
+        .roi-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--bone-light);
+            letter-spacing: -1px;
+        }
+
+        .roi-item:last-child .roi-value {
+            font-size: 42px;
+            color: #FFD700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .cta-section .section-header {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .hero-actions {
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0;
+            background: var(--midnight-navy);
+            border-top: 1px solid rgba(250, 249, 244, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(250, 249, 244, 0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-bar-content {
+                flex-wrap: wrap;
+                gap: 32px;
+                justify-content: space-around;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-container {
+                height: 300px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .solution-card {
+                padding-left: 0;
+                padding-top: 72px;
+            }
+
+            .solution-number {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Legal Web Solutions</div>
+                <a href="#contact" class="header-cta">
+                    <span>Bezpłatny audyt</span>
+                    <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="hero-label">Case Study</span>
+                        <h1>Profesjonalna strona to nie koszt – to inwestycja zwracająca się wielokrotnie</h1>
+                        <p class="hero-description">
+                            Kancelaria prawna zwiększyła liczbę leadów o 12 100% i odzyskała 654 000 PLN utraconego przychodu rocznie dzięki profesjonalnej stronie internetowej.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#case-study" class="cta-button">
+                                <span>Zobacz case study</span>
+                                <i data-lucide="arrow-down" style="width: 18px; height: 18px;"></i>
+                            </a>
+                            <a href="#contact" class="cta-button secondary">
+                                <span>Skontaktuj się</span>
+                                <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Stats Card -->
+                    <div class="hero-stats">
+                        <div class="hero-stats-label">Sprawdzone dane rynkowe</div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i data-lucide="search"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>96%</h3>
+                                    <p>klientów używa wyszukiwarek przy wyborze prawnika</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i data-lucide="phone-missed"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>35%</h3>
+                                    <p>telefonów nie jest odbieranych przez kancelarie</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i data-lucide="smartphone"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>88%</h3>
+                                    <p>ruchu pochodzi z urządzeń mobilnych</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <section class="trust-bar">
+            <div class="container">
+                <div class="trust-bar-content">
+                    <div class="trust-item">
+                        <div class="trust-number">+740%</div>
+                        <div class="trust-label">Wzrost ruchu</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">+1350%</div>
+                        <div class="trust-label">Lepsza konwersja</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">122</div>
+                        <div class="trust-label">Leady miesięcznie</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">1.8s</div>
+                        <div class="trust-label">Czas ładowania</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Study Section -->
+        <section id="case-study">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Case Study</span>
+                    <h2>Transformacja Kancelarii Prawnej Nexis</h2>
+                    <p class="section-description">
+                        Średniej wielkości kancelaria specjalizująca się w odszkodowaniach i prawie rodzinnym borykała się z przestarzałą stroną z 2017 roku. Po wdrożeniu profesjonalnego rozwiązania webowego, rezultaty przeszły najśmielsze oczekiwania.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <div class="image-placeholder">
+                        <div class="placeholder-content">
+                            <i data-lucide="layout-dashboard"></i>
+                            <p>Professional law firm website mockup - modern design with clear call-to-action buttons and trust signals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card before">
+                        <div class="comparison-header">
+                            <i data-lucide="trending-down"></i>
+                            <span>PRZED: Stara Strona</span>
+                        </div>
+                        <ul class="metric-list">
+                            <li class="metric-item">
+                                <span class="metric-label">Ruch miesięczny</span>
+                                <span class="metric-value">250</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Współczynnik konwersji</span>
+                                <span class="metric-value">0,4%</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Leady miesięcznie</span>
+                                <span class="metric-value">1</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Czas ładowania</span>
+                                <span class="metric-value">>6s</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card after">
+                        <div class="comparison-header">
+                            <i data-lucide="trending-up"></i>
+                            <span>PO: Nowa Strona</span>
+                        </div>
+                        <ul class="metric-list">
+                            <li class="metric-item">
+                                <span class="metric-label">Ruch miesięczny</span>
+                                <span class="metric-value">2 100</span>
+                                <span class="metric-change">+740%</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Współczynnik konwersji</span>
+                                <span class="metric-value">5,8%</span>
+                                <span class="metric-change">+1350%</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Leady miesięcznie</span>
+                                <span class="metric-value">122</span>
+                                <span class="metric-change">+12 100%</span>
+                            </li>
+                            <li class="metric-item">
+                                <span class="metric-label">Czas ładowania</span>
+                                <span class="metric-value">1,8s</span>
+                                <span class="metric-change">-70%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems Section -->
+        <section class="alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Problemy</span>
+                    <h2>Co tracisz bez profesjonalnej strony internetowej?</h2>
+                    <p class="section-description">
+                        Współczesne kancelarie prawne tracą potencjalnych klientów na każdym kroku procesu cyfrowego. Oto najbardziej kosztowne błędy.
+                    </p>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="phone-off"></i>
+                        </div>
+                        <h3>Nieodebrane połączenia</h3>
+                        <p>
+                            Kancelarie nie odbierają średnio 35% telefonów w godzinach pracy. Dla kancelarii odszkodowawczej, gdzie średnia wartość sprawy to 55 000 USD, oznacza to milionowe straty rocznie.
+                        </p>
+                        <div class="card-stat">85% dzwoniących nie zadzwoni ponownie</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <h3>Słaba optymalizacja mobilna</h3>
+                        <p>
+                            88% ruchu pochodzi z urządzeń mobilnych, ale większość stron prawnych nie jest przystosowana do smartfonów. Wolne ładowanie i nieczytelne przyciski skutkują natychmiastową utratą klienta.
+                        </p>
+                        <div class="card-stat">53% użytkowników rezygnuje po 3 sekundach</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="star-off"></i>
+                        </div>
+                        <h3>Brak weryfikacji społecznej</h3>
+                        <p>
+                            47% konsumentów nie weźmie pod uwagę kancelarii z oceną niższą niż 4 gwiazdki. Przestarzała strona sugeruje "taniego" lub "desperackiego" prawnika, nawet jeśli tak nie jest.
+                        </p>
+                        <div class="card-stat">82% sprawdza recenzje przed kontaktem</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="wallet"></i>
+                        </div>
+                        <h3>Marnowanie budżetu reklamowego</h3>
+                        <p>
+                            Jeśli płacisz 100 USD za kliknięcie w Google Ads, a użytkownik trafia na przestarzałą stronę, budżet jest wyrzucany w błoto. Każdy dolar wydany na marketing wymaga profesjonalnej strony docelowej.
+                        </p>
+                        <div class="card-stat">78% kancelarii niezadowolonych z ROI reklam</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="search-x"></i>
+                        </div>
+                        <h3>Niewidoczność w wyszukiwarkach</h3>
+                        <p>
+                            Bez odpowiedniej struktury treści, Schema Markup i optymalizacji lokalnego SEO, Twoja kancelaria jest niewidoczna dla 96% potencjalnych klientów, którzy szukają prawnika online.
+                        </p>
+                        <div class="card-stat">75% leadów liderów rynku pochodzi z SEO</div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3>Brak obsługi po godzinach</h3>
+                        <p>
+                            Klienci szukają prawnika w soboty i wieczory – pod wpływem stresu i presji czasu. Bez systemu live chat, formularzy czy rezerwacji online tracisz te leady na rzecz konkurencji.
+                        </p>
+                        <div class="card-stat">33% zapytań nie otrzymuje odpowiedzi</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Rozwiązania</span>
+                    <h2>Jak profesjonalna strona internetowa rozwiązuje te problemy?</h2>
+                    <p class="section-description">
+                        Nowoczesna architektura strony prawnej to kompleksowy system pozyskiwania i konwersji klientów, zbudowany na sprawdzonych mechanizmach psychologii konsumenta i najlepszych praktykach UX.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <div class="image-placeholder">
+                        <div class="placeholder-content">
+                            <i data-lucide="monitor-smartphone"></i>
+                            <p>Modern responsive law firm website on multiple devices - desktop, tablet, and mobile</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card solution-card">
+                        <div class="solution-number">01</div>
+                        <h3>Mobile-First Design</h3>
+                        <p>
+                            Zaprojektowany z myślą o kciuku – duże przyciski "Zadzwoń Teraz" przyklejone do dołu ekranu, czytelna typografia i błyskawiczne ładowanie (< 2.5s) zatrzymują 53% ruchu, który ucieka przy wolnych stronach.
+                        </p>
+                    </div>
+
+                    <div class="card solution-card">
+                        <div class="solution-number">02</div>
+                        <h3>Architektura High-Trust</h3>
+                        <p>
+                            Zamiast zdjęcia budynku sądu – autentyczne wideo zespołu w akcji. Trust badges (Rzetelna Firma, nagrody branżowe) i widget z oceną 4.9/5 z Google Maps bezpośrednio pod przyciskiem CTA budują zaufanie przed pierwszą rozmową.
+                        </p>
+                    </div>
+
+                    <div class="card solution-card">
+                        <div class="solution-number">03</div>
+                        <h3>Inteligentne formularze wieloetapowe</h3>
+                        <p>
+                            Zamiast odstrasza długiego formularza – interaktywne kafelki: "Czego dotyczy Twoja sprawa?" (Rozwód, Wypadek, Spadek). Technika mikro-zobowiązań zwiększa konwersję nawet o 300%.
+                        </p>
+                    </div>
+
+                    <div class="card solution-card">
+                        <div class="solution-number">04</div>
+                        <h3>Live Chat 24/7 i systemy rezerwacji</h3>
+                        <p>
+                            Obsługiwany przez AI lub dedykowane zespoły, przechwytuje dane kontaktowe o każdej porze. Klienci mogą samodzielnie umówić konsultację, eliminując potrzebę natychmiastowego połączenia i odzyskując 35% leadów.
+                        </p>
+                    </div>
+
+                    <div class="card solution-card">
+                        <div class="solution-number">05</div>
+                        <h3>Lokalne SEO i AEO</h3>
+                        <p>
+                            Dedykowane podstrony dla dzielnic i miast ościennych celują w frazy "near me". Schema Markup i sekcje FAQ sprawiają, że strona jest "czytelna" dla ChatGPT i Google SGE – nowej ery wyszukiwania.
+                        </p>
+                    </div>
+
+                    <div class="card solution-card">
+                        <div class="solution-number">06</div>
+                        <h3>Integracja weryfikacji społecznej</h3>
+                        <p>
+                            Karuzela opinii zaciągana automatycznie z Google, anonimizowane studia przypadków ("Sprawa X: Odmowa wypłaty -> Wygrana 200 tys. PLN") i certyfikaty izby adwokackiej budują autorytet bez wysiłku.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI Section -->
+        <section class="roi-section">
+            <div class="container">
+                <div class="roi-content">
+                    <span class="section-label">Zwrot z inwestycji</span>
+                    <h2>Koszt zaniechania</h2>
+                    <p class="section-description">
+                        To nie jest koszt nowej strony. To kwota, którą płacisz każdego roku za posiadanie starej, nieefektywnej strony internetowej – lub jej brak.
+                    </p>
+
+                    <div class="roi-calculation">
+                        <div class="roi-item">
+                            <span class="roi-label">Bez profesjonalnej strony: leady rocznie</span>
+                            <span class="roi-value">12</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Konwersja leadów na klientów (15%)</span>
+                            <span class="roi-value">~2 sprawy</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Średnia wartość sprawy</span>
+                            <span class="roi-value">3 000 PLN</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label">Przychód rocznie</span>
+                            <span class="roi-value">6 000 PLN</span>
+                        </div>
+                        <div class="roi-item" style="margin-top: 32px;">
+                            <span class="roi-label">Z profesjonalną stroną: przychód rocznie</span>
+                            <span class="roi-value">660 000 PLN</span>
+                        </div>
+                        <div class="roi-item">
+                            <span class="roi-label"><strong>Utracone korzyści rocznie</strong></span>
+                            <span class="roi-value">654 000 PLN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Następny krok</span>
+                    <h2>Przestań tracić klientów na rzecz konkurencji</h2>
+                    <p class="section-description">
+                        Oferujemy kompleksową strategię "High-Trust Legal Web" – od audytu technicznego Twojej obecnej strony, przez projektowanie architektury konwersji, po wdrożenie i optymalizację SEO.
+                    </p>
+                </div>
+                <div class="hero-actions">
+                    <a href="mailto:kontakt@legalwebsolutions.pl" class="cta-button">
+                        <span>Zamów bezpłatny audyt</span>
+                        <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                    </a>
+                    <a href="tel:+48123456789" class="cta-button secondary">
+                        <span>Zadzwoń: +48 123 456 789</span>
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>© 2025 Legal Web Solutions. Wszystkie prawa zastrzeżone.</div>
+                <div>Kompleksowe rozwiązania webowe dla kancelarii prawnych</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
