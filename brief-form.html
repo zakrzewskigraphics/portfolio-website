@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://formspree.io 'unsafe-inline'; style-src 'self' https://unpkg.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://formspree.io; base-uri 'self'; form-action 'self' https://formspree.io;">
+
+    <!-- Primary Meta Tags -->
+    <title>Brief Strategiczny - Zakrzewski Hubert</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#151515">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Custom Styles for Brief Form -->
+    <style>
+        .brief-page {
+            min-height: 100vh;
+            padding: 80px 20px 120px;
+            background: var(--bg-primary);
+        }
+
+        .brief-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .brief-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .brief-title {
+            font-family: 'Condenso', sans-serif;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: normal;
+            line-height: 1;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .brief-subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .brief-section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(247, 246, 239, 0.02);
+            border: 1px solid rgba(247, 246, 239, 0.05);
+            border-radius: 24px;
+        }
+
+        .brief-section-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .brief-question {
+            margin-bottom: 32px;
+        }
+
+        .brief-question h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .brief-question-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .custom-checkbox,
+        .custom-radio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .custom-checkbox input,
+        .custom-radio input {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(247, 246, 239, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .custom-radio .checkmark {
+            border-radius: 50%;
+        }
+
+        .custom-checkbox input:checked+.checkmark,
+        .custom-radio input:checked+.checkmark {
+            background: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .checkmark::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--bg-primary);
+            display: block;
+            opacity: 0;
+            border-radius: 2px;
+        }
+
+        .custom-radio .checkmark::after {
+            border-radius: 50%;
+        }
+
+        .custom-checkbox input:checked+.checkmark::after,
+        .custom-radio input:checked+.checkmark::after {
+            opacity: 1;
+        }
+
+        .label-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Range slider styling */
+        .range-container {
+            margin: 20px 0;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            background: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(247, 246, 239, 0.1);
+            border-radius: 2px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--text-primary);
+            margin-top: -6px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .brief-section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Grain Effect Overlay -->
+    <div class="grain-overlay"></div>
+
+    <section class="brief-page">
+        <div class="brief-container">
+            <a href="index.html" class="back-to-home">
+                <span class="icon-mask">
+                    <span class="icon-track">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="cta-icon icon-arrow icon-arrow--primary" style="transform: rotate(180deg);">
+                            <path d="M7 7h10v10" />
+                            <path d="M7 17 17 7" />
+                        </svg>
+                    </span>
+                </span>
+                Back to Home
+            </a>
+
+            <header class="brief-header">
+                <h1 class="brief-title">BRIEF STRATEGICZNY</h1>
+                <p class="brief-subtitle">Wersja skrócona. Ten dokument pomoże mi stworzyć markę, która naprawdę Was
+                    odzwierciedla.</p>
+            </header>
+
+            <form class="contact-form" action="https://formspree.io/f/xgvpbqkw" method="POST">
+                <!-- Hidden fields for Formspree -->
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="hidden" name="_subject" value="New Strategic Brief Submission">
+
+                <!-- Contact Info Section -->
+                <div class="brief-section">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="date">Data</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="filled_by">Wypełnia (Imię i Nazwisko)</label>
+                            <input type="text" id="filled_by" name="filled_by" required>
+                        </div>
+                    </div>
+                    <div class="form-field" style="margin-top: 20px;">
+                        <label for="contact_info">Kontakt (Telefon / Email)</label>
+                        <input type="text" id="contact_info" name="contact_info" required>
+                    </div>
+                </div>
+
+                <!-- Part 1: Historia -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 1: HISTORIA</h2>
+
+                    <div class="brief-question">
+                        <h3>1. Co Was skłoniło do otwarcia nowego Concept Store?</h3>
+                        <p class="brief-question-desc">Jaka była motywacja? Co chcecie osiągnąć?</p>
+                        <div class="form-field">
+                            <textarea name="q1_motivation" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>2. Co chcecie ZACHOWAĆ z dziedzictwa obu marek?</h3>
+                        <p class="brief-question-desc">Wartości, cechy, kojarzenia</p>
+                        <div class="form-field">
+                            <textarea name="q2_heritage" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>3. Od czego chcecie się odciąć? Co Was ograniczało do tej pory?</h3>
+                        <div class="form-field">
+                            <textarea name="q3_limitations" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 2: Kim Jesteście -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 2: KIM JESTEŚCIE</h2>
+
+                    <div class="brief-question">
+                        <h3>4. Gdyby Wasza marka była osobą, to kim?</h3>
+                        <p class="brief-question-desc">Zaznaczcie 3-5 cech:</p>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Wyrafinowana">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Wyrafinowana</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Ciepła">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Ciepła</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Minimalistyczna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Minimalistyczna</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Klasyczna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Klasyczna</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Nowoczesna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Nowoczesna</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Ekskluzywna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Ekskluzywna</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Elegancka">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Elegancka</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Europejska">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Europejska</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Subtelna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Subtelna</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q4_traits" value="Odważna">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Odważna</span>
+                            </label>
+                        </div>
+                        <div class="form-field" style="margin-top: 16px;">
+                            <label for="q4_traits_other">Inne (wpisz):</label>
+                            <input type="text" id="q4_traits_other" name="q4_traits_other">
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>5. Dokończcie zdanie:</h3>
+                        <p class="brief-question-desc">"Nasz Concept Store to miejsce dla osób, które..."</p>
+                        <div class="form-field">
+                            <textarea name="q5_sentence" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>6. Co WAS odróżnia od innych butików?</h3>
+                        <p class="brief-question-desc">Dlaczego klient ma przyjść do Was?</p>
+                        <div class="form-field">
+                            <textarea name="q6_differentiation" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>7. Jaką OBIETNICĘ dajesz klientowi?</h3>
+                        <p class="brief-question-desc">Co wyniesie z wizyty? Czego może być pewien?</p>
+                        <div class="form-field">
+                            <textarea name="q7_promise" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 3: Klient -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 3: KLIENT</h2>
+
+                    <div class="brief-question">
+                        <h3>8. Wasz idealny klient - KTO TO?</h3>
+                        <p class="brief-question-desc">Wiek, płeć, wartości, styl życia, podejście do zakupów</p>
+                        <div class="form-field">
+                            <textarea name="q8_ideal_client" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>9. Klient ma kupić coś za 800 zł. Co musi się stać w jego głowie żeby powiedział "kupuję"?
+                        </h3>
+                        <div class="form-field">
+                            <textarea name="q9_purchase_trigger" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 4: Produkt -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 4: PRODUKT</h2>
+
+                    <div class="brief-question">
+                        <h3>10. Jakie marki będziecie prowadzić?</h3>
+                        <p class="brief-question-desc">5-10 kluczowych marek lub typ marek</p>
+                        <div class="form-field">
+                            <textarea name="q10_brands" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>11. Co ŁĄCZY te marki?</h3>
+                        <p class="brief-question-desc">Europejskość? Niszowość? Jakość? Zrównoważenie?</p>
+                        <div class="form-field">
+                            <textarea name="q11_commonality" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>12. Ile średnio wynoszą zakupy przeciętnego klienta?</h3>
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="q12_avg_purchase" value="200-400">
+                                <span class="checkmark"></span>
+                                <span class="label-text">200-400 zł</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q12_avg_purchase" value="400-600">
+                                <span class="checkmark"></span>
+                                <span class="label-text">400-600 zł</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q12_avg_purchase" value="600-800">
+                                <span class="checkmark"></span>
+                                <span class="label-text">600-800 zł</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q12_avg_purchase" value="800-1200">
+                                <span class="checkmark"></span>
+                                <span class="label-text">800-1200 zł</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q12_avg_purchase" value="1200+">
+                                <span class="checkmark"></span>
+                                <span class="label-text">1200+ zł</span>
+                            </label>
+                        </div>
+                        <div class="form-field" style="margin-top: 16px;">
+                            <label for="q12_reasoning">Dlaczego te kwoty?</label>
+                            <input type="text" id="q12_reasoning" name="q12_reasoning">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 5: Inspiracje -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 5: INSPIRACJE</h2>
+
+                    <div class="brief-question">
+                        <h3>13. Wymieńcie 2-3 marki które Was INSPIRUJĄ:</h3>
+                        <div class="form-row" style="margin-top: 16px;">
+                            <div class="form-field">
+                                <label>Marka 1:</label>
+                                <input type="text" name="q13_brand1">
+                            </div>
+                            <div class="form-field">
+                                <label>Dlaczego?</label>
+                                <input type="text" name="q13_brand1_why">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-top: 16px;">
+                            <div class="form-field">
+                                <label>Marka 2:</label>
+                                <input type="text" name="q13_brand2">
+                            </div>
+                            <div class="form-field">
+                                <label>Dlaczego?</label>
+                                <input type="text" name="q13_brand2_why">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-top: 16px;">
+                            <div class="form-field">
+                                <label>Marka 3:</label>
+                                <input type="text" name="q13_brand3">
+                            </div>
+                            <div class="form-field">
+                                <label>Dlaczego?</label>
+                                <input type="text" name="q13_brand3_why">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>14. Style wizualne - które Was interesują?</h3>
+                        <p class="brief-question-desc">Zaznaczcie 2-3</p>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="Brutalist">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Brutalist (surowy, minimalistyczny)</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="Editorial">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Editorial (magazynowy, wyrafinowany)</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="Warm Minimal">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Warm Minimal (ciepły minimalizm)</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="Classic Luxury">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Classic Luxury (ponadczasowa elegancja)</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="Scandinavian">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Scandinavian (czysty, funkcjonalny)</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="q14_styles" value="French Chic">
+                                <span class="checkmark"></span>
+                                <span class="label-text">French Chic (effortless elegance)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 6: Język Marki -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 6: JĘZYK MARKI</h2>
+
+                    <div class="brief-question">
+                        <h3>15. Jak chcecie mówić do klientów?</h3>
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="q15_address" value="Ty">
+                                <span class="checkmark"></span>
+                                <span class="label-text">"Ty" (cieplej, bliżej)</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q15_address" value="Pan/Pani">
+                                <span class="checkmark"></span>
+                                <span class="label-text">"Pan/Pani" (dystans, elegancja)</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q15_address" value="Mix">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Mix</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>16. Ton komunikacji (1-5):</h3>
+
+                        <div class="range-container">
+                            <p class="label-text" style="margin-bottom: 8px;">Prosty - Wyrafinowany</p>
+                            <input type="range" name="q16_tone_simple_refined" min="1" max="5" value="3">
+                            <div class="range-labels">
+                                <span>Prosty</span>
+                                <span>Wyrafinowany</span>
+                            </div>
+                        </div>
+
+                        <div class="range-container">
+                            <p class="label-text" style="margin-bottom: 8px;">Ciepły - Profesjonalny</p>
+                            <input type="range" name="q16_tone_warm_pro" min="1" max="5" value="3">
+                            <div class="range-labels">
+                                <span>Ciepły</span>
+                                <span>Profesjonalny</span>
+                            </div>
+                        </div>
+
+                        <div class="range-container">
+                            <p class="label-text" style="margin-bottom: 8px;">Konkretny - Emocjonalny</p>
+                            <input type="range" name="q16_tone_concrete_emotional" min="1" max="5" value="3">
+                            <div class="range-labels">
+                                <span>Konkretny</span>
+                                <span>Emocjonalny</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 7: Naming -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 7: NAMING</h2>
+
+                    <div class="brief-question">
+                        <h3>17. Nowa nazwa:</h3>
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="q17_naming" value="New">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Całkowicie nowa (fresh start)</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q17_naming" value="Evolution">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Ewolucja Coco/Q-MEN (nawiązanie)</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="q17_naming" value="No Preference">
+                                <span class="checkmark"></span>
+                                <span class="label-text">Bez preferencji</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>18. Jakiej nazwy NIE chcecie?</h3>
+                        <div class="form-field">
+                            <input type="text" name="q18_naming_avoid">
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>19. Słowa kluczowe / kierunki:</h3>
+                        <p class="brief-question-desc">np. "coś francuskiego", "związane z tkaniną", "minimalistyczne"
+                        </p>
+                        <div class="form-field">
+                            <textarea name="q19_keywords" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 8: Wizja -->
+                <div class="brief-section">
+                    <h2 class="brief-section-title">CZĘŚĆ 8: WIZJA</h2>
+
+                    <div class="brief-question">
+                        <h3>20. Jest dzień otwarcia (styczeń 2025). Klient wchodzi do sklepu.</h3>
+                        <p class="brief-question-desc">Co widzi? Co czuje?</p>
+                        <div class="form-field">
+                            <textarea name="q20_vision" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="brief-question">
+                        <h3>21. Opisz nową markę JEDNYM ZDANIEM:</h3>
+                        <div class="form-field">
+                            <textarea name="q21_one_sentence" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-consent">
+                    <input type="checkbox" id="brief-consent" name="consent" required>
+                    <label for="brief-consent">Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji
+                        zlecenia.</label>
+                </div>
+
+                <button type="submit" class="form-submit"
+                    style="margin-top: 40px; width: 100%; justify-content: center;">
+                    <span class="icon-mask">
+                        <span class="icon-track">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--primary">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="submit-icon icon-arrow icon-arrow--secondary"
+                                aria-hidden="true">
+                                <path d="M7 7h10v10" />
+                                <path d="M7 17 17 7" />
+                            </svg>
+                        </span>
+                    </span>
+                    <span class="submit-text">Wyślij Brief</span>
+                </button>
+
+            </form>
+
+            <footer style="margin-top: 80px; text-align: center; color: var(--text-tertiary); font-size: 14px;">
+                <p>Copyright &copy; 2025 Zakrzewski Hubert. Wszystkie prawa zastrzeżone.</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Page Loader (Optional, reuse if scripts allow) -->
+
+    <script src="script.js"></script>
+    <script>
+        // Use default today's date
+        document.getElementById('date').valueAsDate = new Date();
+    </script>
+</body>
+
+</html>
