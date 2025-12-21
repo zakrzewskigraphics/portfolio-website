@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# 1. To clean URL (redirect from .html to without)
+RewriteCond %{THE_REQUEST} \.html [NC]
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# 2. To serve from clean URL (internally add .html)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
